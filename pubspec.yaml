@@ -26,6 +26,8 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   camera_camera: ^2.0.1
+  image_picker: ^0.7.4
+  get:
 
 dev_dependencies:
   flutter_test:

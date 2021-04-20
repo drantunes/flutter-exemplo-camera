@@ -2,6 +2,7 @@
     package="com.example.flutter_camera_exemplo">
    <application
         android:label="flutter_camera_exemplo"
+        android:requestLegacyExternalStorage="true" 
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
