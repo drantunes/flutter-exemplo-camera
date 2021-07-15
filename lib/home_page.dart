@@ -9,18 +9,18 @@ import 'package:image_picker/image_picker.dart';
 import 'package:get/get.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  File arquivo;
+  File? arquivo;
   final picker = ImagePicker();
 
   Future getFileFromGallery() async {
-    final file = await picker.getImage(source: ImageSource.gallery);
+    PickedFile? file = await picker.getImage(source: ImageSource.gallery);
 
     if (file != null) {
       setState(() => arquivo = File(file.path));
@@ -28,10 +28,10 @@ class _HomePageState extends State<HomePage> {
   }
 
   showPreview(file) async {
-    file = await Get.to(() => PreviewPage(file: file));
+    File? arq = await Get.to(() => PreviewPage(file: file));
 
-    if (file != null) {
-      setState(() => arquivo = file);
+    if (arq != null) {
+      setState(() => arquivo = arq);
       Get.back();
     }
   }
@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                if (arquivo != null) Anexo(arquivo: arquivo),
+                if (arquivo != null) Anexo(arquivo: arquivo!),
                 ElevatedButton.icon(
                   onPressed: () => Get.to(
                     () => CameraCamera(onFile: (file) => showPreview(file)),
